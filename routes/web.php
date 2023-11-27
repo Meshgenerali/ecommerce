@@ -78,3 +78,7 @@ Route::get('/show_cart', [HomeController::class, 'show_cart']);
 // reove cart route 
 
 Route::get('/remove_cart/{id}', [HomeController::class, 'remove_cart']);
+
+// route to cash on delivery order
+
+Route::get('/cash_order', [HomeController::class, 'cash_order']);
