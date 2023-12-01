@@ -82,3 +82,10 @@ Route::get('/remove_cart/{id}', [HomeController::class, 'remove_cart']);
 // route to cash on delivery order
 
 Route::get('/cash_order', [HomeController::class, 'cash_order']);
+
+// route for cardpayment using stripe
+
+Route::get('/stripe_payment/{total_price}', [HomeController::class, 'stripe_payment']);
+
+
+Route::post('/stripe/{total_price}', [HomeController::class, 'stripePost'])->name('stripe.post');
