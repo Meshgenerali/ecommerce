@@ -88,4 +88,13 @@ Route::get('/cash_order', [HomeController::class, 'cash_order']);
 Route::get('/stripe_payment/{total_price}', [HomeController::class, 'stripe_payment']);
 
 
+// route for actual payment
 Route::post('/stripe/{total_price}', [HomeController::class, 'stripePost'])->name('stripe.post');
+
+// show order on admin pannel
+
+Route::get('/order', [AdminController::class, 'order']);
+
+// route to update order
+
+Route::get('/deliver/{id}', [AdminController::class, 'deliver']);
