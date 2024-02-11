@@ -98,3 +98,7 @@ Route::get('/order', [AdminController::class, 'order']);
 // route to update order
 
 Route::get('/deliver/{id}', [AdminController::class, 'deliver']);
+
+// route to print pdf receipt of the particular order
+
+Route::get('/print_pdf/{id}', [AdminController::class, 'print_pdf']);
