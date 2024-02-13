@@ -111,3 +111,7 @@ Route::get('/deliver/{id}', [AdminController::class, 'deliver']);
 
 Route::get('/print_pdf/{id}', [AdminController::class, 'print_pdf']);
 
+// route to search in order admin panel
+
+Route::get('/search', [AdminController::class, 'search']);
+

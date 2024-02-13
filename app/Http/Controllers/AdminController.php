@@ -208,5 +208,18 @@ class AdminController extends Controller
 
         return redirect()->back()->with('message', 'Email send successfully');
     }
+
+
+    // searching data on the admin panel
+
+    public function search(Request $request) {
+
+        $searchText = $request->search;
+
+        $order = order::where('name', 'LIKE', "%$searchText%")->orwhere('email', 'LIKE', "%$searchText%")->orwhere('phone', 'LIKE', "%$searchText%")->orwhere('product_title', 'LIKE', "%$searchText%")->get();
+
+        return view('admin.order', compact('order'));
+
+    }
     
 }
