@@ -32,6 +32,17 @@
         <div class="main-panel">
             <div class="content-wrapper">
 
+            @if (session()->has('message'))
+
+                  <div  class="alert alert-success">
+
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+                    {{ session()->get('message') }}
+
+                  </div>
+    
+            @endif
+
             <h1 style="text-align: center; margin-top: 20px;">Send Email to <span style="color: blue;">{{$order->email}}</span></h1>
 
 

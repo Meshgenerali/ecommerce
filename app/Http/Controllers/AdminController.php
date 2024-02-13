@@ -8,7 +8,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Notifications\firstNotification;
-use Illuminate\Notifications\Notification;
+use Notification;
 
 
 
@@ -205,6 +205,8 @@ class AdminController extends Controller
         ];
 
         Notification::send($order, new firstNotification($details));
+
+        return redirect()->back()->with('message', 'Email send successfully');
     }
     
 }
