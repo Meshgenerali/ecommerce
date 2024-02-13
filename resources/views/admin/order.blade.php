@@ -58,6 +58,7 @@
             <th>Image</th>
             <th>Delivered</th>
             <th>Receipt</th>
+            <th>sen mail</th>
           </tr>
 
           @foreach ($order as $order)
@@ -96,6 +97,10 @@
 
            <td>
             <a href="{{url('print_pdf', $order->id)}}" class="btn btn-secondary">print</a>
+           </td>
+
+           <td>
+             <a href="{{url('send_email', $order->id)}}" class="btn btn-info">send mail</a>
            </td>
 
           </tr>

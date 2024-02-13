@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
-use App\Models\Product;
 use App\Models\Order;
+use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
+use App\Notifications\firstNotification;
+use Illuminate\Notifications\Notification;
+
+
 
 class AdminController extends Controller
 {
@@ -174,5 +178,33 @@ class AdminController extends Controller
 
     }
 
+    // send email to user 
+
+    public function  send_email($id) {
+
+        $order = order::find($id);
+        
+        return view('admin.email', compact('order'));
+    }
+
+
+    // actual send of the mail
+
+    public function send_user_email(Request $request, $id) {
+        $order = order::find($id);
+
+        $details = [
+            'greeting' => $request->greeting,
+            'email-first-line' => $request->emailFirstLine,
+            'email-body' => $request->emailBody,
+            'email-button' => $request->emailButton,
+            'url' => $request->url,
+            'email-last-line' => $request->emailLastLine
+
+
+        ];
+
+        Notification::send($order, new firstNotification($details));
+    }
     
 }
