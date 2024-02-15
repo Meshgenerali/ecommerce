@@ -7,6 +7,8 @@ use Session;
 use Stripe\Charge;
 use App\Models\Cart;
 use App\Models\Order;
+use App\Models\User;
+
 
 use App\Models\Product;
 
@@ -27,7 +29,28 @@ class HomeController extends Controller
         $usertype = Auth::user()->usertype;
 
         if($usertype == '1') {
-            return view('admin.home');
+
+            $total_product = product::all()->count();
+            $total_order = order::all()->count();
+            $total_customer = user::all()->count();
+
+            $order = order::all();
+
+            $total_revenue = 0;
+
+            foreach ($order as $order) 
+            {
+                $total_revenue = $total_revenue  + $order->price;
+            }
+
+            $total_delivered = order::where('delivery_status', '=','Delivered')->get()->count();
+
+            $total_processing = order::where('delivery_status', '=', 'processing')->get()->count();
+            
+
+            return view('admin.home', compact('total_product', 'total_order', 'total_customer', 'total_revenue', 'total_delivered', 'total_processing'));
+
+
         } else {
             $product = Product::paginate(9);
         return view('home.userpage', compact('product'));
@@ -225,6 +248,38 @@ class HomeController extends Controller
               
 
         return back();
+
+    }
+
+    
+
+    // show all orders of a particular customer
+
+    public function show_order() {
+
+        if(Auth::id()) {
+
+            $user = Auth::user();
+            $user_id = $user->id;
+
+            $order = order::where('user_id','=', $user_id)->get();
+            return view('home.show_order', compact('order'));
+        } else {
+            return redirect('login');
+        }
+    }
+
+    // cancel order by user
+
+    public function cancel_order($id) {
+
+        $order = order::find($id);
+
+        $order->delivery_status = 'you cancelled this order';
+        
+        $order->save();
+
+        return redirect()->back()->with('message', 'Order Cancelled successfully');
 
     }
 

@@ -115,3 +115,11 @@ Route::get('/print_pdf/{id}', [AdminController::class, 'print_pdf']);
 
 Route::get('/search', [AdminController::class, 'search']);
 
+// route to show all orders a cistomer has
+
+Route::get('show_order', [HomeController::class, 'show_order'])->middleware('auth');
+
+// route to cancel order
+
+Route::get('/cancel_order/{id}', [HomeController::class, 'cancel_order']);
+

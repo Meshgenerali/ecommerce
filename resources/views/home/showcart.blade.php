@@ -11,7 +11,7 @@
       <meta name="description" content="" />
       <meta name="author" content="" />
       <link rel="shortcut icon" href="home/images/favicon.png" type="">
-      <title>Famms - Fashion HTML Template</title>
+      <title>Ecommerce website</title>
       <!-- bootstrap core css -->
       <link rel="stylesheet" type="text/css" href="home/css/bootstrap.css" />
       <!-- font awesome style -->
@@ -125,9 +125,9 @@
 
      
       <div class="cpy_">
-         <p class="mx-auto">© 2021 All Rights Reserved By <a href="https://html.design/">Custom Html Templates</a><br>
+         <p class="mx-auto">© 2021 All Rights Reserved By <a href="https://meshmalonza.42web.io/">Meshack Malonza</a><br>
          
-            Distributed By <a href="https://themewagon.com/" target="_blank">Extreme developers</a>
+            Distributed By <a href="https://meshmalonza.42web.io/" target="_blank">Extreme developers</a>
          
          </p>
       </div>
