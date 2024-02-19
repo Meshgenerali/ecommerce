@@ -123,3 +123,10 @@ Route::get('show_order', [HomeController::class, 'show_order'])->middleware('aut
 
 Route::get('/cancel_order/{id}', [HomeController::class, 'cancel_order']);
 
+// route to addcomment
+
+Route::post('/add_comment', [HomeController::class, 'add_comment'])->middleware('auth');
+
+// route to add reply
+
+Route::post('/add_reply', [HomeController::class, 'add_reply'])->middleware('auth');

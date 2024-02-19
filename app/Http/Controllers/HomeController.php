@@ -6,12 +6,13 @@ use Stripe;
 use Session;
 use Stripe\Charge;
 use App\Models\Cart;
+use App\Models\Comment;
 use App\Models\Order;
 use App\Models\User;
 
 
 use App\Models\Product;
-
+use App\Models\Reply;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -22,7 +23,9 @@ class HomeController extends Controller
 
     public function index() {
         $product = Product::paginate(9);
-        return view('home.userpage', compact('product'));
+        $comment = Comment::orderby('id', 'desc')->get();
+        $reply = Reply::orderby('id', 'desc')->get();
+        return view('home.userpage', compact('product', 'comment', 'reply'));
     }
 
     public function redirect() {
@@ -53,7 +56,10 @@ class HomeController extends Controller
 
         } else {
             $product = Product::paginate(9);
-        return view('home.userpage', compact('product'));
+            $comment = Comment::orderby('id', 'desc')->get();
+            $reply = Reply::orderby('id', 'desc')->get();
+      
+            return view('home.userpage', compact('product', 'comment', 'reply'));
         }
     }
 
@@ -281,6 +287,53 @@ class HomeController extends Controller
 
         return redirect()->back()->with('message', 'Order Cancelled successfully');
 
+    }
+
+    // add commment
+
+    public function add_comment(Request $request) {
+
+        if(Auth::id()) {
+            $comment = new Comment();
+
+            $comment->name = Auth::user()->name;
+            $comment->comment = $request->comment;
+            $comment->user_id = Auth::user()->id;
+
+            $comment->save();
+            return redirect()->back()->with('message', 'comment sent successfully');
+
+        } else {
+
+            return redirect('login');
+        }
+
+    }
+
+    
+    // add reply method
+
+    public function add_reply(Request $request) {
+
+        // check if the the user has loggged in
+
+        if(Auth::id()) {
+
+            $reply = new Reply();
+
+            $reply->name = Auth::user()->name;
+            $reply->comment_id = $request->commentId;
+            $reply->reply = $request->reply;
+            $reply->user_id = Auth::user()->id;
+
+            $reply->save();
+
+            return redirect()->back()->with('message', 'reply send successfully');
+
+        } else {
+
+           return redirect('login');
+        }
     }
 
 
