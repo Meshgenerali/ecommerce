@@ -130,3 +130,7 @@ Route::post('/add_comment', [HomeController::class, 'add_comment'])->middleware(
 // route to add reply
 
 Route::post('/add_reply', [HomeController::class, 'add_reply'])->middleware('auth');
+
+// route to serach for products
+
+Route::get('/search_product', [HomeController::class, 'search_product']);

@@ -44,6 +44,7 @@
           font-weight: 700;
           border-style: none;
           padding: 10px;
+          text-transform: lowercase;
         }
 
         /* replies css */
@@ -56,6 +57,33 @@
           background-color: #002c3e; 
 
         }
+
+                /* Style for the search bar */
+     /* Reset default margins and paddings */
+     * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Style for the search bar */
+        .search-container {
+            display: flex;
+            align-items: center; /* Align items vertically */
+            width: 300px;
+            margin: 0 auto;
+        }
+        
+        .search-input {
+            flex: 1; /* Take remaining space */
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            background-color: #002c3e;
+            color: #fff;
+        }
+                  
 
      
       </style>
@@ -205,6 +233,19 @@
 
 
       </script>
+
+      <!-- keeping the scroll position after refresh on the comment section -->
+
+<script>
+        document.addEventListener("DOMContentLoaded", function(event) { 
+            var scrollpos = localStorage.getItem('scrollpos');
+            if (scrollpos) window.scrollTo(0, scrollpos);
+        });
+
+        window.onbeforeunload = function(e) {
+            localStorage.setItem('scrollpos', window.scrollY);
+        };
+</script>
       <!-- jQery -->
       <script src="home/js/jquery-3.4.1.min.js"></script>
       <!-- popper js -->

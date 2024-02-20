@@ -336,6 +336,21 @@ class HomeController extends Controller
         }
     }
 
+    // search product method
+
+    public function search_product(Request $request) {
+
+        $search = $request->search;
+
+        $product = product::where('title', 'LIKE', "%$search%")->orwhere('description', 'LIKE', "%$search%")->orwhere('category', 'LIKE', "$search")->paginate(9);
+        $comment = Comment::orderby('id', 'desc')->get();
+        $reply = Reply::orderby('id', 'desc')->get();
+
+        return view('home.userpage', compact('product', 'comment', 'reply'));
+
+
+    }
+
 
     
 }

@@ -4,7 +4,23 @@
                <h2>
                   Our <span>products</span>
                </h2>
+
+             
             </div>
+
+            <!-- search product section -->
+        
+  
+        <div class="search-container">
+        <form action="{{url('search_product')}}" method="get">
+            <input type="text" class="search-input" name="search" placeholder="Search...">
+            <button class="btn btn-success">search</button>
+         </form>
+        </div>
+
+
+         <!-- search products ends here -->
+
             <div class="row">
                @foreach ($product as $products)
                   
