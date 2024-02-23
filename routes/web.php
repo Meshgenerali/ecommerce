@@ -31,69 +31,69 @@ Route::get('/redirect', [HomeController::class, 'redirect'])->middleware('auth',
 
 //route to show categpry page
 
-Route::get('/view_category', [AdminController::class, 'view_category']);
+Route::get('/view_category', [AdminController::class, 'view_category'])->middleware('auth');
 
-Route::post('/add_category', [AdminController::class, 'add_category']);
+Route::post('/add_category', [AdminController::class, 'add_category'])->middleware('auth');
 
 // route to delete catagory
 
-Route::get('/delete_category/{id}', [AdminController::class, 'delete_category']);
+Route::get('/delete_category/{id}', [AdminController::class, 'delete_category'])->middleware('auth');
 
 // route to show add product page
 
-Route::get('/view_product', [AdminController::class, 'view_product']);
+Route::get('/view_product', [AdminController::class, 'view_product'])->middleware('auth');
 
 // add product route
 
-Route::post('/add_product', [AdminController::class, 'add_product']);
+Route::post('/add_product', [AdminController::class, 'add_product'])->middleware('auth');
 
 // show product view route
 
-Route::get('/show_product', [AdminController::class, 'show_product']);
+Route::get('/show_product', [AdminController::class, 'show_product'])->middleware('auth');
 
 // route to delete product
 
-Route::get('/delete_product/{id}', [AdminController::class, 'delete_product']);
+Route::get('/delete_product/{id}', [AdminController::class, 'delete_product'])->middleware('auth');
 
 // route to show edit page
 
-Route::get('/update_product/{id}', [AdminController::class, 'update_product']);
+Route::get('/update_product/{id}', [AdminController::class, 'update_product'])->middleware('auth');
 
 // route to actually update product
 
-Route::post('/update_product_confirm/{id}', [AdminController::class, 'update_product_confirm']);
+Route::post('/update_product_confirm/{id}', [AdminController::class, 'update_product_confirm'])->middleware('auth');
 
 // route to sen email
 
-Route::get('/send_email/{id}', [AdminController::class, 'send_email']);
+Route::get('/send_email/{id}', [AdminController::class, 'send_email'])->middleware('auth');
 
 // route to actually send email to the user
 
-Route::post('/send_user_email/{id}', [AdminController::class, 'send_user_email']);
+Route::post('/send_user_email/{id}', [AdminController::class, 'send_user_email'])->middleware('auth');
 
 // route to  show all product details
 
-Route::get('/product_details/{id}', [HomeController::class, 'product_details']);
+Route::get('/product_details/{id}', [HomeController::class, 'product_details'])->middleware('auth');
 
 //add to cart route
 
-Route::post('/add_cart/{id}', [HomeController::class, 'add_cart']);
+Route::post('/add_cart/{id}', [HomeController::class, 'add_cart'])->middleware('auth');
 
 // show items added to cart route
 
-Route::get('/show_cart', [HomeController::class, 'show_cart']);
+Route::get('/show_cart', [HomeController::class, 'show_cart'])->middleware('auth');
 
 // reove cart route 
 
-Route::get('/remove_cart/{id}', [HomeController::class, 'remove_cart']);
+Route::get('/remove_cart/{id}', [HomeController::class, 'remove_cart'])->middleware('auth');
 
 // route to cash on delivery order
 
-Route::get('/cash_order', [HomeController::class, 'cash_order']);
+Route::get('/cash_order', [HomeController::class, 'cash_order'])->middleware('auth');
 
 // route for cardpayment using stripe
 
-Route::get('/stripe_payment/{total_price}', [HomeController::class, 'stripe_payment']);
+Route::get('/stripe_payment/{total_price}', [HomeController::class, 'stripe_payment'])->middleware('auth');
 
 
 // route for actual payment
@@ -121,7 +121,7 @@ Route::get('show_order', [HomeController::class, 'show_order'])->middleware('aut
 
 // route to cancel order
 
-Route::get('/cancel_order/{id}', [HomeController::class, 'cancel_order']);
+Route::get('/cancel_order/{id}', [HomeController::class, 'cancel_order'])->middleware('auth');
 
 // route to addcomment
 
@@ -131,6 +131,14 @@ Route::post('/add_comment', [HomeController::class, 'add_comment'])->middleware(
 
 Route::post('/add_reply', [HomeController::class, 'add_reply'])->middleware('auth');
 
-// route to serach for products
+// route to search for products
 
 Route::get('/search_product', [HomeController::class, 'search_product']);
+
+// fixing search on products >> header
+
+Route::get('/product_search', [HomeController::class, 'product_search']);
+
+// route to show all products when one clicks on header >> products
+
+Route::get('/all_products', [HomeController::class, 'all_products']);

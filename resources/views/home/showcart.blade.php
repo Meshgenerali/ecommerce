@@ -11,15 +11,15 @@
       <meta name="description" content="" />
       <meta name="author" content="" />
       <link rel="shortcut icon" href="home/images/favicon.png" type="">
-      <title>Ecommerce website</title>
+      <title>ecommerce website</title>
       <!-- bootstrap core css -->
-      <link rel="stylesheet" type="text/css" href="home/css/bootstrap.css" />
+      <link rel="stylesheet" type="text/css" href="{{asset('home/css/bootstrap.css')}}" />
       <!-- font awesome style -->
-      <link href="home/css/font-awesome.min.css" rel="stylesheet" />
+      <link href="{{asset('home/css/font-awesome.min.css')}}" rel="stylesheet" />
       <!-- Custom styles for this template -->
-      <link href="home/css/style.css" rel="stylesheet" />
+      <link href="{{asset('home/css/style.css')}}" rel="stylesheet" />
       <!-- responsive style -->
-      <link href="home/css/responsive.css" rel="stylesheet" />
+      <link href="{{asset('home/css/responsive.css')}}" rel="stylesheet" />
 
       <style>
          .center {
@@ -95,7 +95,7 @@
                 </td>
 
                 <td>
-                  <a class="btn btn-danger" onclick="return confirm('Are you sure to remove this product from cart?')" href="{{url('remove_cart', $cart->id)}}">Remove Product</a>
+                  <a class="btn btn-danger" onclick="return confirm('Are you sure to remove this product from cart?')" href="{{url('remove_cart', $cart->id)}}">Remove</a>
                 </td>
 
             </tr>

@@ -1,9 +1,6 @@
 <section class="product_section layout_padding">
          <div class="container">
             <div class="heading_container heading_center">
-               <h2>
-                  Our <span>products</span>
-               </h2>
 
              
             </div>
@@ -12,7 +9,7 @@
         
   
         <div class="search-container">
-        <form action="{{url('search_product')}}" method="get">
+        <form action="{{url('product_search')}}" method="get">
             <input type="text" class="search-input" name="search" placeholder="Search...">
             <button class="btn btn-success">search</button>
          </form>
@@ -23,16 +20,16 @@
 
          <!-- search products ends here -->
 
-       @if (session()->has('message'))
-
-         <div  class="alert alert-success">
-
-         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
-         {{ session()->get('message') }}
-
-         </div>
-            
-      @endif
+                @if (session()->has('message'))
+               
+               <div  class="alert alert-success">
+               
+               <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+               {{ session()->get('message') }}
+               
+               </div>
+                  
+               @endif
 
             <div class="row">
                @foreach ($product as $products)

@@ -72,7 +72,7 @@ class HomeController extends Controller
         return view('home.product_details', compact('product'));
     }
 
-    //addto cart
+    //add to cart
 
     public function add_cart(Request $request, $id) {
         
@@ -82,29 +82,62 @@ class HomeController extends Controller
             $user = Auth::user();
             $product = product::find($id);
             $cart = new Cart;
+            $user_id = $user->id;
 
-            $cart->name = $user->name;
-            $cart->email = $user->email;
-            $cart->address = $user->address;
-            $cart->phone = $user->phone;
-            $cart->user_id = $user->id;
-            $cart->product_title = $product->title;
-            
+            $product_exists = cart::where('product_id', '=', $id)->where('user_id', '=', $user_id)->get('id')->first();
 
-            if ($product->discount_price!=null) {
+            if ($product_exists) {
 
-                $cart->price = $product->discount_price * $request->quantity;
+                    $cart = cart::find($product_exists)->first();
+                    $quantity = $cart->quantity;
+                    $cart->quantity = $quantity + $request->quantity;
+
+                    if ($product->discount_price!=null) {
+    
+                        $cart->price = $product->discount_price * $cart->quantity;
+        
+                    } else {
+                        $cart->price = $product->price * $cart->quantity;
+                    }
+
+                    $cart->save();
+
+                    return redirect()->back()->with('message', 'product added successfully');
+
+
 
             } else {
-                $cart->price = $product->price * $request->quantity;
+
+                $cart->name = $user->name;
+                $cart->email = $user->email;
+                $cart->address = $user->address;
+                $cart->phone = $user->phone;
+                $cart->user_id = $user->id;
+                $cart->product_title = $product->title;
+                
+    
+                if ($product->discount_price!=null) {
+    
+                    $cart->price = $product->discount_price * $request->quantity;
+    
+                } else {
+                    $cart->price = $product->price * $request->quantity;
+                }
+                $cart->product_id = $product->id;
+                $cart->image = $product->image;
+                $cart->quantity = $request->quantity;
+    
+                $cart->save();
+    
+                return redirect()->back()->with('message', 'product added successfully');
+
+
+
+                
             }
-            $cart->product_id = $product->id;
-            $cart->image = $product->image;
-            $cart->quantity = $request->quantity;
 
-            $cart->save();
 
-            return redirect()->back();
+
 
         } else 
         {
@@ -127,6 +160,8 @@ class HomeController extends Controller
         }
         
     }
+
+    // delete products from the cart
 
     public function remove_cart($id) {
         $cart = cart::find($id);
@@ -349,6 +384,30 @@ class HomeController extends Controller
         return view('home.userpage', compact('product', 'comment', 'reply'));
 
 
+    }
+
+    // fixxing search on products >> header
+
+    public function product_search(Request $request) {
+        $search = $request->search;
+
+        $product = product::where('title', 'LIKE', "%$search%")->orwhere('description', 'LIKE', "%$search%")->orwhere('category', 'LIKE', "$search")->paginate(9);
+        $comment = Comment::orderby('id', 'desc')->get();
+        $reply = Reply::orderby('id', 'desc')->get();
+
+        return view('home.all_products', compact('product', 'comment', 'reply'));
+
+    }
+
+    // show all products on the home page
+
+    public function all_products() {
+
+        $product = product::paginate(9);
+        $comment = Comment::orderby('id', 'desc')->get();
+        $reply = Reply::orderby('id', 'desc')->get();
+
+        return view('home.all_products', compact('product', 'comment', 'reply'));
     }
 
 
