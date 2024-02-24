@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
    <head>
+
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+   
       <!-- Basic -->
       <meta charset="utf-8" />
       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -51,6 +54,8 @@
       </style>
    </head>
    <body>
+    @include('sweetalert::alert')
+
       <div class="hero_area">
          <!-- header section strats -->
          @include('home.header')
@@ -100,7 +105,7 @@
                 <td>
                     @if ($order->delivery_status == 'processing')
 
-                    <a onclick="return confirm('are you sure to cancel this order ?')" href="{{url('cancel_order', $order->id)}}" class="btn btn-danger">cancel order</a>
+                    <a onclick="confirm(event)" href="{{url('cancel_order', $order->id)}}" class="btn btn-danger">cancel order</a>
                         
 
                     @else 
@@ -129,6 +134,34 @@
          
          </p>
       </div>
+
+      <script>
+      function confirm(ev) {
+        ev.preventDefault();
+        var urlToRedirect = ev.currentTarget.getAttribute('href');  
+        console.log(urlToRedirect); 
+        swal({
+            title: "Are you sure to cancel this product",
+            text: "You will not be able to revert this!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((willCancel) => {
+            if (willCancel) {
+
+
+                 
+                window.location.href = urlToRedirect;
+               
+            }  
+
+
+        });
+
+        
+    }
+</script>
       <!-- jQery -->
       <script src="home/js/jquery-3.4.1.min.js"></script>
       <!-- popper js -->

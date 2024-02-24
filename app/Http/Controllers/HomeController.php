@@ -9,6 +9,7 @@ use App\Models\Cart;
 use App\Models\Comment;
 use App\Models\Order;
 use App\Models\User;
+use RealRashid\SweetAlert\Facades\Alert;
 
 
 use App\Models\Product;
@@ -102,7 +103,8 @@ class HomeController extends Controller
 
                     $cart->save();
 
-                    return redirect()->back()->with('message', 'product added successfully');
+                    Alert::success('product added successfully', 'we have added product to the cart');
+                    return redirect()->back();
 
 
 
