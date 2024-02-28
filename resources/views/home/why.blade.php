@@ -100,7 +100,7 @@
                            Fast Delivery
                         </h5>
                         <p>
-                           variations of passages of Lorem Ipsum available
+                        Enjoy quick, 24-hour delivery on all orders, guaranteeing that your preferred wines and spirits will arrive on time.
                         </p>
                      </div>
                   </div>
@@ -215,7 +215,7 @@
                            Free Shiping
                         </h5>
                         <p>
-                           variations of passages of Lorem Ipsum available
+                        Experience free shipping on all orders, simplifying your shopping experience and saving you money on delivery fees.
                         </p>
                      </div>
                   </div>
@@ -236,7 +236,8 @@
                            Best Quality
                         </h5>
                         <p>
-                           variations of passages of Lorem Ipsum available
+                        Best wines and spirits that have been carefully chosen to ensure the highest level of quality and flavor satisfaction.
+
                         </p>
                      </div>
                   </div>

@@ -1,6 +1,6 @@
 <section class="slider_section ">
             <div class="slider_bg_box">
-               <img src="images/slider-bg.jpg" alt="">
+               <img src="{{asset('images/gil.webp')}}" alt="">
             </div>
             <div id="customCarousel1" class="carousel slide" data-ride="carousel">
                <div class="carousel-inner">
@@ -17,10 +17,10 @@
                                     On Everything
                                  </h1>
                                  <p>
-                                    Explicabo esse amet tempora quibusdam laudantium, laborum eaque magnam fugiat hic? Esse dicta aliquid error repudiandae earum suscipit fugiat molestias, veniam, vel architecto veritatis delectus repellat modi impedit sequi.
+                                 Your one-stop shop for premium liquor online. Browse our extensive selection and enjoy convenient delivery.
                                  </p>
                                  <div class="btn-box">
-                                    <a href="" class="btn1">
+                                    <a href="{{url('all_products')}}" class="btn1">
                                     Shop Now
                                     </a>
                                  </div>
@@ -42,10 +42,10 @@
                                     On Everything
                                  </h1>
                                  <p>
-                                    Explicabo esse amet tempora quibusdam laudantium, laborum eaque magnam fugiat hic? Esse dicta aliquid error repudiandae earum suscipit fugiat molestias, veniam, vel architecto veritatis delectus repellat modi impedit sequi.
+                                 Curated collection of craft spirits, wines, and beers delivered to your doorstep. Explore our passion for quality beverages.
                                  </p>
                                  <div class="btn-box">
-                                    <a href="" class="btn1">
+                                    <a href="{{url('all_products')}}" class="btn1">
                                     Shop Now
                                     </a>
                                  </div>
@@ -67,10 +67,10 @@
                                     On Everything
                                  </h1>
                                  <p>
-                                    Explicabo esse amet tempora quibusdam laudantium, laborum eaque magnam fugiat hic? Esse dicta aliquid error repudiandae earum suscipit fugiat molestias, veniam, vel architecto veritatis delectus repellat modi impedit sequi.
+                                 Find your favorite drinks online. Order your liquor and have it delivered straight to you.
                                  </p>
                                  <div class="btn-box">
-                                    <a href="" class="btn1">
+                                    <a href="{{url('all_products')}}" class="btn1">
                                     Shop Now
                                     </a>
                                  </div>

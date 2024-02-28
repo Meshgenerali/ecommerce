@@ -111,7 +111,7 @@
 
 
         <div>
-         <h4 class="total_design">Total Price: ${{$totalPrice}}</h4>
+         <h4 class="total_design">Total Price: ksh. {{$totalPrice}}</h4>
          </div>
 
          <div>

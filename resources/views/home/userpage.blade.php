@@ -106,95 +106,99 @@
       <!-- end why section -->
       
       <!-- arrival section -->
-        @include('home.new_arrival')
+
+
+        <!-- @include('home.new_arrival') -->
+
+
       <!-- end arrival section -->
       
       <!-- product section -->
         @include('home.product')
       <!-- end product section -->
 
-
-      <!-- comment and reply section sterts here -->
-
-          <div class="comment-container">
-            <h4 style="color: #f7444e; font-size: 40px; font-weight: bold; font-style: italic; text-align: center;">Comments</h4>
+        <!-- comment section starts here -->
 
 
-           <!-- @if (session()->has('message'))
+        <div class="container mt-5 mb-5">
 
-            <div  class="alert alert-success">
+            <div class="row height d-flex justify-content-center align-items-center">
 
-              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
-              {{ session()->get('message') }}
+              <div class="col-md-7">
 
-            </div>
+                <div class="card">
 
-          @endif -->
+                  <div class="p-3">
 
-          <form action="{{url('add_comment')}}" method="post">
-            @csrf
-            <textarea name="comment" style="background-color: #002c3e; color: #fff; padding: 2%; border-radius: 12px; font-size: 16px;" name="comment" cols="30" rows="5" placeholder="type your comment here" ></textarea>
-            <input type="submit" value="send" class="btn btn-primary">
-            <br>
-            <br>
-            
-          </form>
-          </div>
+                    <h6>Comments</h6>
+                    
+                  </div>
 
-          <div class="comment-container">
-          <h4 style="color: #f7444e; font-size: 40px; font-weight: bold; font-style: italic; text-align: center;">All Comments</h4>
-         
+                  <div class="mt-3 d-flex flex-row align-items-center p-3 form-color">
 
-          @foreach ($comment as $comment)
+                  <form action="{{url('add_comment')}}" method="post">
 
-          <div>
-          <b>{{$comment->name}}</b>
-          <p>{{$comment->comment}}</p>
-          <a href="javascript::void(0)" class="btn btn-danger" onclick="reply(this)" data-commentid = "{{$comment->id}}">reply now</a>
-          </div>
-          <br>
+                  <input type="text" name="comment" class="form-control" placeholder="Enter your comment...">
 
-            @foreach ($reply as $user_reply)
+                  <button type="submit" class="btn btn-primary">send</button>
+                  </form>
 
-            @if ($user_reply->comment_id == $comment->id)
+                  </div>
 
-            <div class="replies">
 
-              <b>{{$user_reply->name}}</b>
-              <p>{{$user_reply->reply}}</p>
-              <a href="javascript::void(0)" class="btn btn-danger" onclick="reply(this)" data-commentid = "{{$comment->id}}">reply</a>
+                  <div class="mt-2">
 
-            </div>
-            @endif
-            
+
+
+@foreach ($comment as $comment)
+
+
+<div class="d-flex flex-row p-3">
+
+
+<div class="w-100">
+
+  <div class="d-flex justify-content-between align-items-center">
+      <div class="d-flex flex-row align-items-center">
+        <span class="mr-2">{{$comment->name}}</span>
+        <small class="c-badge">Top Comment</small>
+      </div>
+      <small>2h ago</small>
+</div>
+
+<p class="text-justify comment-text mb-0">{{$comment->comment}}</p>
+
+<div class="d-flex flex-row user-feed">
+
+  <span class="wish"><i class="fa fa-heartbeat mr-2"></i>14</span>
+  <!-- <span class="ml-3"><i class="fa fa-comments-o mr-2"></i>Reply</span> -->
+  <a href="" class="ml-3"><i class="fa fa-comments-o mr-2"></i>Reply</a>
+  
+
+  
+</div>
+
+</div>
+
+
+</div>
+  
+@endforeach
+
+                  
+                </div>
+                
+              </div>
               
-            @endforeach
-          <br>
-          <br>
+            </div>
+            </div>
             
-          @endforeach
-
-          <!-- reply text box -->
-          <div style="display: none;" class="replyDiv">
-
-          <form action="{{url('add_reply')}}" method="post">
-            @csrf
-
-            <textarea name="reply" class="reply-text" placeholder="type your reply here and hit send"></textarea>
-            <input type="text" id="commentId" name="commentId" hidden>
-            <br>
-            <button type="submit" class="btn btn-success">send</button>
-            <a href="javascript::void(0)" class="btn btn-danger" onclick="reply_close(this)">X</a>
-          </form>
-
           </div>
 
-          </div>
 
-          
+        <!-- comment section ends here -->
 
 
-      <!-- comment and reply section ends here -->
 
       <!-- subscribe section -->
         @include('home.subscribe')

@@ -52,7 +52,7 @@
                                  <h6 style="text-decoration: line-through; color:blue;">
                                  Price
                                  <br>
-                                 ${{ $product->price }}
+                                 ksh. {{ $product->price }}
                                 </h6>
 
                                 @else
@@ -60,13 +60,13 @@
                                  <h6 style="color: blue;">
                                  price
                                  <br>
-                                      ${{ $product->price }}
+                                      ksh. {{ $product->price }}
                                </h6>
 
                               @endif
                               <h6> <b>Product Catagory: </b> {{$product->category}}</h6>
                               <h6> <b>Product Description: </b> {{$product->description}}</h6>
-                              <h6> <b>Product Quantity: </b> {{$product->quantity}}</h6>
+                              <!-- <h6> <b>Product Quantity: </b> {{$product->quantity}}</h6> -->
 
                                  <form action="{{url('/add_cart',$product->id)}}" method="post">
                                     @csrf

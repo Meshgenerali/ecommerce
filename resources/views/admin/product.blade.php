@@ -75,7 +75,7 @@
 
                     <div class="product_div">
                     <label for="price">Discount Price :</label>
-                    <input type="number" name="discount_price" placeholder="Enter discounted price" required>
+                    <input type="number" name="discount_price" placeholder="Enter discounted price">
                     </div>
 
                     <div class="product_div">

@@ -70,13 +70,13 @@
                            <h6 style="color: red;">
                            Discount price
                            <br>
-                           ${{ $products->discount_price }}
+                           ksh. {{ $products->discount_price }}
                            </h6>
 
                                  <h6 style="text-decoration: line-through; color:blue;">
                                  Price
                                  <br>
-                                 ${{ $products->price }}
+                                 ksh. {{ $products->price }}
                                 </h6>
 
                                 @else
@@ -84,7 +84,7 @@
                                  <h6 style="color: blue;">
                                  price
                                  <br>
-                                      ${{ $products->price }}
+                                      ksh. {{ $products->price }}
                                </h6>
 
                               @endif
